@@ -1,0 +1,21 @@
+#define LED_PIN 13  // Change to any output pin you want
+
+void setup() {
+    pinMode(LED_PIN, OUTPUT);
+    Serial.begin(9600);
+}
+
+void loop() {
+    if (Serial.available() > 0) {
+        char command = Serial.read();
+        
+        if (command == '1') {
+            digitalWrite(LED_PIN, HIGH);  // Turn on
+            Serial.println("LED turned ON");
+        } 
+        else if (command == '0') {
+            digitalWrite(LED_PIN, LOW);   // Turn off
+            Serial.println("LED turned OFF");
+        }
+    }
+}
